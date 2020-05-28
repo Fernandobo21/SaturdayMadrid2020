@@ -1,0 +1,15 @@
+{
+  "name": "saturday-madrid-20",
+  "version": "1.0.0",
+  "scripts": {
+    "transpile": "tsc"
+  },
+  "devDependencies": {
+    "grunt": "~1.1.0",
+    "grunt-contrib-uglify": "~4.0.1",
+    "grunt-contrib-watch": "~1.1.0"
+  },
+  "dependencies": {
+    "typescript": "^3.9.3"
+  }
+}
