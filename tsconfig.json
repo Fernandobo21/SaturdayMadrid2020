@@ -5,6 +5,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": false,
-        "outDir": "$(Build.ArtifactStagingDirectory)/dist"
+        "outDir": "dist"
+        //"outDir": "/dist"
     }
 }

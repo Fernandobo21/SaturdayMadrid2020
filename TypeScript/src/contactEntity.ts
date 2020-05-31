@@ -1,34 +1,25 @@
 class ContactMainForm {
-    public formContext: any;
-    public contactConstructor(executionContext: any) {
-        this.formContext = executionContext.getFormContext();
-        this.doOnLoad();
-        this.formContext.data.entity.addOnSave(this.doOnSave);
-    }
-    public doOnLoad()
-    {
-        console.log("Begin of OnLoad");
-        // var eval:Boolean = true;
-        // var test:string = (eval === true) ? "" : 0;
-        var att:any = this.formContext.getAttribute("lastname");
-        this.formContext.getAttribute("lastname").addOnChange(this.doOnChange(att));
-        console.log("OnChange added");
-
-        (this.formContext.getControl("firstname") !== null) ?? this.formContext.getAttribute("firstname").setValue(" --> doOnLoad()");
-        console.log("End of OnLoad");
-    }
-    public doOnSave()
+    public doOnSave(executionContext: any)
     {
         console.log("Begin of OnSave");
-        //this.formContext.ui.setFormNotification("Typescript locked and loaded!", "INFO", "ts-msg");
-        (this.formContext.getControl("firstname") !== null) ?? this.formContext.getAttribute("firstname").setValue(" --> doOnSave()");
+        const _formContext:any = executionContext.getFormContext();
+        const value:any = _formContext.getAttribute("firstname").getValue();
+        _formContext.getAttribute("firstname").setValue(value + " --> doOnSave()");
+        this.sum(_formContext, "fbg_onsave");
         console.log("End of OnSave");
     }
-    public doOnChange(attribute:any)
+    public doOnChange(executionContext: any)
     {
-        console.log("Begin of OnChange of" + attribute.getName());
-        var value:any = attribute.getValue();
-        attribute.setValue(value + " --> doOnChange()");
-        console.log("End of OnChange of" + attribute.getName());
+        console.log("Begin of OnChange");
+        var _formContext:any  = executionContext.getFormContext();
+        var value:any = _formContext.getAttribute("lastname").getValue();
+        _formContext.getAttribute("lastname").setValue(value + " --> doOnChange()");
+        this.sum(_formContext, "fbg_onchange");
+        console.log("End of OnChange");
+    }
+    private sum(_formContext:any, field:string)
+    {
+        var value:number = _formContext.getAttribute(field).getValue();
+        _formContext.getAttribute(field).setValue(value++);
     }
 }

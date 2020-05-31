@@ -2,7 +2,8 @@
   "name": "saturday-madrid-20",
   "version": "1.0.0",
   "scripts": {
-    "transpile": "tsc"
+    "transpile": "tsc",
+    "minify": "uglifyjs dist/contactEntity.js --output dist/contactEntity.min.js"
   },
   "devDependencies": {
     "grunt": "~1.1.0",
@@ -10,6 +11,7 @@
     "grunt-contrib-watch": "~1.1.0"
   },
   "dependencies": {
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "uglify-js": "^3.9.4"
   }
 }
